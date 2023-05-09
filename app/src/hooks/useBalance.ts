@@ -27,7 +27,7 @@ export const useBalance = () => {
   
   useEffect(() => {
     if (address) getBalance(address)
-  }, [mounted, address])
+  }, [address])
 
   return {
     balance: balance,
