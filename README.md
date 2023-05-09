@@ -1,12 +1,12 @@
 # wagmi-example
 
-## setup
-Refer to wagmi [Getting Started](https://wagmi.sh/react/getting-started)
+## Setup
+### Refer to wagmi [Getting Started](https://wagmi.sh/react/getting-started)
 ```bash
 npm init wagmi
 ```
 
-The below is generated package.json
+### The below is generated package.json
 ```json
 {
   "name": "wagmi-app",
@@ -36,6 +36,11 @@ The below is generated package.json
 }
 ```
 
-Run `npm run dev` and access to [http://localhost:3000/](http://localhost:3000/)
+### Run `npm run dev` and access to [http://localhost:3000/](http://localhost:3000/)
 
 <img src="https://github.com/hiromaily/wagmi-example/blob/main/images/wagmi-nextjs.png?raw=true" alt="first page" title="first page">
+
+### wagmi Action 
+```bash
+npm i @wagmi/core
+```

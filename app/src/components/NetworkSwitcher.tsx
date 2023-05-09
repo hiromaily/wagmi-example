@@ -3,7 +3,7 @@ import { useNetwork, useSwitchNetwork } from 'wagmi'
 export function NetworkSwitcher() {
   const { chain } = useNetwork()
   const { chains, error, isLoading, pendingChainId, switchNetwork } =
-    useSwitchNetwork()
+    useSwitchNetwork() // switching networks with a connector
 
   return (
     <div>
