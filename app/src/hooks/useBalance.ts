@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { useAccount } from 'wagmi'
+import { useAccount, useNetwork } from 'wagmi'
 //import { getBalance } from '../libs/wagmi/balance'
 import { fetchBalance } from '@wagmi/core'
 //import type { FetchBalanceResult }  from '@wagmi/core'
@@ -7,6 +7,7 @@ import { fetchBalance } from '@wagmi/core'
 export const useBalance = () => {
   // evm address
   const { address } = useAccount() // accessing account data and connection status
+  const { chain } = useNetwork()
   const [mounted, setMounted] = useState(false)
   const [balance, setBalance] = useState('0')
 
@@ -27,7 +28,7 @@ export const useBalance = () => {
   
   useEffect(() => {
     if (address) getBalance(address)
-  }, [address])
+  }, [address, chain?.id])
 
   return {
     balance: balance,

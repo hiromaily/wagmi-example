@@ -32,10 +32,9 @@ const { chains, provider, webSocketProvider } = configureChains(
 // https://github.com/pancakeswap/pancake-frontend/blob/912eee4ceec53ebba03edf4acbd0276f29095b96/apps/web/src/utils/wagmi.ts#L7
 // https://github.com/sushiswap/sushiswap/blob/13d5644ed4501ad45b0b4771f21555583e5238c6/jobs/pool/src/lib/wagmi.ts#L1
 
-// create signer
-const signer = Wallet.createRandom()
+// TODO: how to add balance to mock?
 
-let connectors = [
+let connectors: (InjectedConnector | CoinbaseWalletConnector | WalletConnectConnector | MockConnector)[] = [
   new MetaMaskConnector({ chains }),
   new CoinbaseWalletConnector({
     chains,
@@ -56,23 +55,19 @@ let connectors = [
       shimDisconnect: true,
     },
   }),
-  new MockConnector({
-    chains,
-    options: {signer: signer},
-  }),
 ];
 
 // add mock
-// if (process.env.NODE_ENV === 'development'){
-//   // create signer
-//   const signer = Wallet.createRandom()
+if (process.env.NODE_ENV === 'development' || process.env.NODE_ENV === 'test'){
+  // create signer
+  const signer = Wallet.createRandom()
 
-//   const mockConn = new MockConnector({
-//     chains,
-//     options: {signer: signer},
-//   })
-//   connectors.push(mockConn)
-// }
+  const mockConn = new MockConnector({
+    chains,
+    options: {signer: signer},
+  })
+  connectors.push(mockConn)
+}
 
 // client
 export const client = createClient({
