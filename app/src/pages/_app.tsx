@@ -5,6 +5,11 @@ import { WagmiConfig } from 'wagmi'
 
 import { client } from '../libs/wagmi/wagmi'
 
+if (process.env.NODE_ENV === 'development' || process.env.NODE_ENV === 'test') {
+  const mockServer = () => import('../mocks/worker')
+  mockServer()
+}
+
 function App({ Component, pageProps }: AppProps) {
   const [mounted, setMounted] = React.useState(false)
   React.useEffect(() => setMounted(true), [])
