@@ -1,7 +1,7 @@
 import { sepolia, mainnet, bsc, bscTestnet } from 'wagmi/chains'
 import type { Chain } from 'wagmi/chains'
 
-const developmentChains = [sepolia, bscTestnet]
+const developmentChains = [mainnet, bsc, sepolia, bscTestnet]
 const testnetChains = [sepolia, bscTestnet]
 const mainnetChains = [mainnet, bsc]
 
