@@ -42,10 +42,13 @@ let connectors: (InjectedConnector | CoinbaseWalletConnector | WalletConnectConn
       appName: config.appName,
     },
   }),
+  // FIXME: WebSocket connection
+  // - https://github.com/wagmi-dev/wagmi/issues/1964
   new WalletConnectConnector({
     chains,
     options: {
-      projectId: '...',
+      projectId: process.env.NEXT_WALLET_CONNECT_PROJECTID ?? '',
+      showQrModal: true,
     },
   }),
   new InjectedConnector({
