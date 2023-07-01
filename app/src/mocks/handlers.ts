@@ -42,4 +42,15 @@ export const handlers = [
       ctx.json({jsonrpc: '2.0', id: 1, result: '0x3E8'}), // 1000
     )
   }),
+
+  rest.get('/foobar', (req, res, ctx) => {
+    return res(
+      ctx.status(200),
+      ctx.json({
+        foo: 'foo',
+        bar: 'bar',
+      }),
+    )
+  }),
+
 ]
