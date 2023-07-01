@@ -19,7 +19,7 @@ if (process.env.NODE_ENV === 'development' || process.env.NODE_ENV === 'test') {
 }
 
 // DI settings, (set implementation here)
-container.register('LoggerInterface', {
+container.register('LoggerDISample', {
   useClass: ConsoleLoggerImpl
 })
 // - Get instance (set class which use dependency here)

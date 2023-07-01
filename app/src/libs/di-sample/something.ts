@@ -4,7 +4,7 @@ import type { LoggerInterface } from '../logger/logger'
 @injectable()
 export class DISample {
   constructor(
-    @inject('LoggerInterface') private log: LoggerInterface
+    @inject('LoggerDISample') private log: LoggerInterface
   ) {}
 
   doSomething(arg: any) {
