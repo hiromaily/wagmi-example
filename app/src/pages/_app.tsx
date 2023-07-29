@@ -12,6 +12,10 @@ import { client } from '../libs/wagmi/wagmi'
 import {ConsoleLoggerImpl, OutsideLoggerImpl} from '../libs/logger/logger'
 import { DISample } from '../libs/di-sample/something'
 
+import { ccxtLog } from '../libs/exchanges/ccxt'
+
+
+
 // msw settings for mock server
 if (process.env.NODE_ENV === 'development' || process.env.NODE_ENV === 'test') {
   const mockServer = () => import('../mocks/worker')
@@ -26,6 +30,9 @@ container.register('LoggerDISample', {
 const diApp = container.resolve(DISample)
 diApp.doSomething('Hello, Something')
 diApp.doSomethingWring('Oops, Something Error')
+
+// cctx sample
+ccxtLog()
 
 function App({ Component, pageProps }: AppProps) {
   const [mounted, setMounted] = React.useState(false)
