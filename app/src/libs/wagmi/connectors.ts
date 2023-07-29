@@ -1,8 +1,15 @@
+import type { Address } from 'wagmi';
 import { CoinbaseWalletConnector } from 'wagmi/connectors/coinbaseWallet';
 import { InjectedConnector } from 'wagmi/connectors/injected';
 import { MetaMaskConnector } from 'wagmi/connectors/metaMask';
 import { WalletConnectConnector } from 'wagmi/connectors/walletConnect';
 import { MockConnector } from 'wagmi/connectors/mock';
+import { foundry, goerli } from 'wagmi/chains';
+import { generatePrivateKey, privateKeyToAccount } from 'viem/accounts';
+import { createWalletClient, http } from 'viem';
+import type { WalletClient } from 'viem';
+import type { Connector } from 'wagmi/connectors';
+
 import { Wallet } from 'ethers';
 import { config } from '../config';
 import { getChains } from './chains';
@@ -37,6 +44,46 @@ export const connectors: (
     },
   }),
 ];
+
+export const getMockWalletClient = () => {
+  /*
+   * @example
+   * // Local Account
+   * import { createWalletClient, custom } from 'viem'
+   * import { privateKeyToAccount } from 'viem/accounts'
+   * import { mainnet } from 'viem/chains'
+   *
+   * const client = createWalletClient({
+   *   account: privateKeyToAccount('0x…')
+   *   chain: mainnet,
+   *   transport: http(),
+   * })
+   */
+  const account = privateKeyToAccount(
+    (process.env.NEXT_MOCK_PRIVATE_KEY ?? generatePrivateKey()) as Address,
+  );
+
+  return createWalletClient({
+    transport: http(),
+    //transport: http(foundry.rpcUrls.default.http[0]),
+    chain: goerli,
+    name: 'Mock Wallet',
+    account: account,
+    //account: "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
+    //key: "0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80",
+    //pollingInterval: 100,
+  });
+};
+
+export const mockConnector: MockConnector = new MockConnector({
+  options: {
+    walletClient: getMockWalletClient(),
+    chainId: goerli.id,
+    flags: {
+      isAuthorized: true,
+    },
+  },
+});
 
 // add mock
 // if (process.env.NODE_ENV === 'development' || process.env.NODE_ENV === 'test') {
