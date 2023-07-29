@@ -66,7 +66,7 @@ export const getMockWalletClient = () => {
   return createWalletClient({
     transport: http(),
     //transport: http(foundry.rpcUrls.default.http[0]),
-    chain: goerli,
+    chain: goerli, // default chain
     name: 'Mock Wallet',
     account: account,
     //pollingInterval: 100,

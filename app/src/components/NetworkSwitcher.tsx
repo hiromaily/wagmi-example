@@ -7,7 +7,7 @@ export function NetworkSwitcher() {
   return (
     <div>
       <div>
-        Connected to {chain?.name ?? chain?.id}
+        Connected to {chain?.name || chain?.id}
         {chain?.unsupported && ' (unsupported)'}, networkID: {chain?.id}
       </div>
 
