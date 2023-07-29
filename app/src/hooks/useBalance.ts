@@ -1,3 +1,4 @@
+import type { Address } from 'wagmi';
 import { useState, useEffect } from 'react';
 import { useAccount, useNetwork } from 'wagmi';
 import { fetchBalance } from '@wagmi/core';
@@ -14,7 +15,7 @@ export const useBalance = () => {
   }, []);
 
   // For EVM
-  const getBalance = async (address: `0x${string}`) => {
+  const getBalance = async (address: Address) => {
     const balanceData = await fetchBalance({
       address: address,
     });

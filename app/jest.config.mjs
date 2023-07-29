@@ -15,7 +15,7 @@ const config = {
   // Fix `SyntaxError: Cannot use import statement outside a module` and
   //  `SyntaxError: Unexpected token 'export'`
   transformIgnorePatterns: [
-    "node_modules/(?!(@wagmi|wagmi|viem|abitype|@adraffy|@tanstack|@@coinbase|@walletconnect|detect-browser)/)",
+    "node_modules/(?!(@wagmi|wagmi|viem|abitype|@adraffy|@tanstack|@@coinbase|@walletconnect|detect-browser|multiformats)/)",
   ],
   globals: {
     // For: error: TypeError: Expected input type is Uint8Array

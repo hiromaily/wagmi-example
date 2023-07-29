@@ -12,6 +12,7 @@ const nextConfig = {
     "@coinbase",
     "@walletconnect",
     "detect-browser",
+    "multiformats",
   ],
 };
 
