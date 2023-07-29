@@ -28,7 +28,7 @@ export const useBalance = () => {
 
   useEffect(() => {
     if (address) {
-      console.debug(`chain.id: ${chain?.id}`)
+      console.debug(`chain.id: ${chain?.id}`);
       getBalance(address);
     }
   }, [address, chain?.id]);

@@ -140,10 +140,10 @@ describe('fetchBalances', () => {
     const args = makeBalanceArgs(userAddr, tokenAddrs);
     try {
       const result = await fetchBalances(args, tokenAddrs);
-      console.log(result);  
-    }catch(e){
+      console.log(result);
+    } catch (e) {
       // instead of missing fail()
-      expect(e).toBeUndefined()
+      expect(e).toBeUndefined();
     }
   });
 });

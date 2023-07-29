@@ -75,7 +75,7 @@ export const fetchBalances = async (
   balances.forEach((balance) => {
     if (balance.value && balance.value.error) {
       console.debug(balance.value.error);
-      throw balance.value.error
+      throw balance.value.error;
     }
   });
 

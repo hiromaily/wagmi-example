@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import useSWR from 'swr';
-import { jsonrpcFetcher } from '../libs/fetcher';
+import { jsonrpcFetcher } from '@/libs/fetcher';
 
 // Example
 // curl -X POST \
@@ -19,14 +19,12 @@ export const useBlockNumber = () => {
   const method = 'eth_blockNumber';
   const params = [] as any;
 
-  //const { data, error } = useSWR(mounted ? [url, method, params] : null, jsonrpcFetcher)
   const { data, error } = useSWR(mounted ? [url, method, params] : null, ([url, method, params]) =>
     jsonrpcFetcher(url, method, params),
   );
-  // console.log(data)
-  // console.log(error)
 
   return {
     blockNum: error ? 0 : parseInt(data as string, 16),
+    error: error,
   };
 };
