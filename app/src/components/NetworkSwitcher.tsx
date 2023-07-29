@@ -1,9 +1,8 @@
-import { useNetwork, useSwitchNetwork } from 'wagmi'
+import { useNetwork, useSwitchNetwork } from 'wagmi';
 
 export function NetworkSwitcher() {
-  const { chain } = useNetwork()
-  const { chains, error, isLoading, pendingChainId, switchNetwork } =
-    useSwitchNetwork() // switching networks with a connector
+  const { chain } = useNetwork();
+  const { chains, error, isLoading, pendingChainId, switchNetwork } = useSwitchNetwork(); // switching networks with a connector
 
   return (
     <div>
@@ -27,5 +26,5 @@ export function NetworkSwitcher() {
 
       <div>{error && error.message}</div>
     </div>
-  )
+  );
 }

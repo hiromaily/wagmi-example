@@ -10,3 +10,12 @@ setup-msw:
 	touch src/mocks/browser.ts
 	touch src/mocks/server.ts
 	touch src/mocks/worker.ts
+
+.PHONY: install
+install:
+	npm install -g npm-check-updates
+
+.PHONY: check-upgrade
+check-upgrade:
+	ncu -u
+	npm install

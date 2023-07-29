@@ -1,9 +1,16 @@
-import { useAccount } from 'wagmi'
+import { useAccount } from 'wagmi';
 
-import { Account, Connect, NetworkSwitcher, Balance, RequestSample, TokenList } from '../components'
+import {
+  Account,
+  Connect,
+  NetworkSwitcher,
+  Balance,
+  RequestSample,
+  TokenList,
+} from '../components';
 
 function Page() {
-  const { isConnected } = useAccount()
+  const { isConnected } = useAccount();
 
   return (
     <>
@@ -21,7 +28,7 @@ function Page() {
         </>
       )}
     </>
-  )
+  );
 }
 
-export default Page
+export default Page;

@@ -13,21 +13,21 @@ interface ErrorResponse {
 
 // return value must be casted as proper type
 const jsonrpcFetcher = async (url: string, method: string, params: any): Promise<any> => {
-  console.log(url)
-  console.log(method)
-  console.log(params)
+  console.log(url);
+  console.log(method);
+  console.log(params);
 
   const response = await fetch(url, {
     method: 'POST',
     headers: {
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
     },
     body: JSON.stringify({
       jsonrpc: '2.0',
       method: method,
       params: params,
-      id: 1
-    })
+      id: 1,
+    }),
   });
 
   const data = await response.json();
@@ -37,7 +37,7 @@ const jsonrpcFetcher = async (url: string, method: string, params: any): Promise
     throw new Error(`Error ${error.code}: ${error.message}`);
   }
 
-  return data.result
-}
+  return data.result;
+};
 
-export { jsonrpcFetcher }
+export { jsonrpcFetcher };

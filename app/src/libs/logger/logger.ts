@@ -1,10 +1,9 @@
-
 /**
  * Logger Interface
  */
 export interface LoggerInterface {
-  log: (...args:any) => void
-  error: (...args:any) => void
+  log: (...args: any) => void;
+  error: (...args: any) => void;
 }
 
 /**
@@ -12,11 +11,11 @@ export interface LoggerInterface {
  */
 export class ConsoleLoggerImpl implements LoggerInterface {
   log(...args: any[]): void {
-    console.log(...args)
+    console.log(...args);
   }
 
   error(...args: any[]): void {
-    console.error(...args)
+    console.error(...args);
   }
 }
 
@@ -25,10 +24,10 @@ export class ConsoleLoggerImpl implements LoggerInterface {
  */
 export class OutsideLoggerImpl implements LoggerInterface {
   log(...args: any[]): void {
-    console.log('logging using outside service for log')
+    console.log('logging using outside service for log');
   }
 
   error(...args: any[]): void {
-    console.log('logging using outside service for error')
+    console.log('logging using outside service for error');
   }
 }

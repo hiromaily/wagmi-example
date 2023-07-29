@@ -1,14 +1,14 @@
-import { sepolia, mainnet, bsc, bscTestnet } from 'wagmi/chains'
-import type { Chain } from 'wagmi/chains'
+import { sepolia, mainnet, bsc, bscTestnet } from 'wagmi/chains';
+import type { Chain } from 'wagmi/chains';
 
-const developmentChains = [mainnet, bsc, sepolia, bscTestnet]
-const testnetChains = [sepolia, bscTestnet]
-const mainnetChains = [mainnet, bsc]
+const developmentChains = [mainnet, bsc, sepolia, bscTestnet];
+const testnetChains = [sepolia, bscTestnet];
+const mainnetChains = [mainnet, bsc];
 
 export const getChains = (): Chain[] => {
-  if (process.env.NODE_ENV === 'development') return developmentChains
-  if (process.env.NODE_ENV === 'test') return testnetChains
-  if (process.env.NODE_ENV === 'production') return mainnetChains
+  if (process.env.NODE_ENV === 'development') return developmentChains;
+  if (process.env.NODE_ENV === 'test') return testnetChains;
+  if (process.env.NODE_ENV === 'production') return mainnetChains;
 
-  return developmentChains
-}
+  return developmentChains;
+};
